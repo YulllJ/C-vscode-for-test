@@ -78,7 +78,7 @@ int main()
 }
 
 //shift alt f:자동 줄맞춤
-*/
+
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -102,7 +102,7 @@ string test()//type이 vector string임 string하고 달라
 int main()
 {
     string a; // 대문자 ㅁsms 65 소문자 97
-    
+
     a=test();
     for (int i = 0; i < size(a); i++)
     {
@@ -112,7 +112,48 @@ int main()
             cout << static_cast<char>(a[i] - 32) << " ";
         }
 
-       
+
     }
     return 0;
+}*/
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int startDay;
+    int daysInMonth;
+    int col = 1;
+    do
+    {
+        cout << "한달의 날짜수를 입력하세여(28,29,30,31): ";
+        cin >> daysInMonth;
+    } while (daysInMonth < 28 || daysInMonth > 31);
+
+    do
+    {
+        cout << "첫날의 요일을 입력하세요(0~6): ";
+        cin >> startDay;
+    } while (startDay < 0 || startDay > 6);
+
+    cout << endl
+         << "Sun Mon Tue Wed Thr Fru Sat" << endl
+         << "--- --- --- --- --- --- --- " << endl;
+    for (int space = 0; space < startDay; space++)
+    {
+        cout << "    ";
+        col++;
+    }
+    for (int day = 1; day <= daysInMonth; day++)
+    {
+        cout << setw(3) << day << " ";
+        col++;
+          if (col > 7)
+    {
+        cout << endl;
+        col = 1;
+    }
+    }
+  
 }
