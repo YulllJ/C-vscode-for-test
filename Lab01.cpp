@@ -116,6 +116,7 @@ int main()
     }
     return 0;
 }*/
+/*
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -142,18 +143,91 @@ int main()
          << "--- --- --- --- --- --- --- " << endl;
     for (int space = 0; space < startDay; space++)
     {
-        cout << "    ";
+        cout << "    "; // 날짜 하나에 해당하는 공백
         col++;
     }
     for (int day = 1; day <= daysInMonth; day++)
     {
         cout << setw(3) << day << " ";
         col++;
-          if (col > 7)
+        if (col > 7)
+        {
+            cout << endl;
+            col = 1;
+        }
+    }
+}
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    const double PI = 3.141529635897932346;
+    int n;
+    double s, peri, area;
+
+    do
     {
-        cout << endl;
-        col = 1;
+        cout << "변의 개수를 입력하세요(4이상의 정수):";
+        cin >> n;
+    } while (n < 4);//while 만족하면 동작 안하는거인듯
+
+        do
+    {
+        cout << "변의 길이를 입력하세요:";
+        cin >> s;
     }
-    }
-  
+    while (s <= 0.0) ;
+    peri = n * s;
+    area = (n * pow(s, 2)) / (n * tan(PI / n));
+    cout << "둘레: " << peri << endl;
+    cout << "넓이: " << area;
+    return 0;
+}*/
+// 7-3
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+class RandomInteger
+{
+private:
+    int low;
+    int high;
+    int value;
+
+public:
+    RandomInteger(int low, int high);
+    ~RandomInteger();
+    RandomInteger(const RandomInteger &random) = delete;
+    void print() const;
+};
+RandomInteger ::RandomInteger(int lw, int hh)
+    : low(lw), high(hh)
+{
+    srand(time(0));
+    int temp = rand();
+    value = temp % (high - low + 1) + low;
+}
+RandomInteger::~RandomInteger() {}
+void RandomInteger::print() const
+{
+    cout << value << endl;
+}
+
+int main()
+{
+    RandomInteger r1(100, 200);
+    cout << "100~200사이의 랜덤한 함수 숫자: ";
+    r1.print();
+    RandomInteger r2(400, 600);
+    cout << "400~600사이의 랜덤한 함수 숫자: ";
+    r2.print();
+    RandomInteger r3(1200, 2000);
+    cout << "1500~2000사이의 랜덤한 함수 숫자: ";
+    r3.print();
+    return 0;
 }
