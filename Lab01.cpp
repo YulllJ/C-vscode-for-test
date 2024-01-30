@@ -1,3 +1,4 @@
+/*
 #include<iostream>
 #include<fstream>
 #include<iomanip>
@@ -42,4 +43,24 @@ int main(){
         cout<< " " << frequencies[i]<< endl;
     }
     return 0;
+}
+*/
+
+
+//const 쓰면 처음 할당 이후로 값을 바꿀수 없어서 보호가 가능함 함수에 const를 붙이면 리턴값을 상수화시켜서 보호한다는 의미(이후에 값을 바꾸면 컴파일 에러남)
+//const int num= function() 에서 function이 const일때는 reference를 사용할때 의미가 있는 것이다.
+//함수에서 안에서 초기화할때는 function():num(3)이런식으로위에 코드에도 있듯이 이런식으로 수정해주는 거인듯
+//const로 오버로딩가능(함수 구분이 가능해진다는 의미)
+#include<iostream>
+using namespace std;
+
+const int Function() {
+    return 10;
+}
+int main (){
+int num1=Function();//이거는 에러가 안나
+const int num2=Function();
+int const num3 =Function();//const 선언 순서 바뀌어도 상관이 없다.
+num2=20;
+cout<<num1<<num2<<num3<<endl;
 }
